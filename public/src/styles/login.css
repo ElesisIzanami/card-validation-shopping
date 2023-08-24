@@ -1,0 +1,275 @@
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden; /* Ocultar la barra de desplazamiento */
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  position: absolute;
+  z-index: 3;
+
+  animation: loader 2s linear forwards;
+}
+@keyframes loader {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.loader div {
+  background: orange;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 10px;
+
+  transform: scale(0);
+  animation: scaling 2s ease-in-out infinite;
+}
+
+.loader div:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.loader div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.loader div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes scaling {
+  0%,
+  100% {
+    transform: scale(0.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.loginContainer {
+  background: radial-gradient(
+    circle,
+    rgba(255, 168, 50, 1) 30%,
+    rgba(254, 131, 48, 1) 50%,
+    rgba(254, 95, 47, 1) 70%,
+    rgba(253, 58, 42, 1) 90%
+  );
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.loginSection {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 16vh 4fr 1fr;
+}
+nav {
+  display: flex;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0.09194698387167366) 25%,
+    rgba(0, 0, 0, 0.2684175721069678) 40%,
+    rgba(0, 0, 0, 0.5849441827512255) 60%,
+    rgba(0, 0, 0, 0.7838237345719538) 80%,
+    rgba(0, 0, 0, 0.83704502308736) 90%
+  );
+  justify-content: end;
+  align-items: center;
+  position: relative;
+}
+
+.logoGameShop {
+  position: absolute;
+  height: 8vh;
+  left: 10px;
+  bottom: 400px;
+  transform: translatex();
+  animation: slideDown 1.8s 1.7s ease-out forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    bottom: 400px; /* Empieza desde abajo */
+  }
+  100% {
+    bottom: 4vh; /* Termina en la posición de origen */
+  }
+}
+
+.iconLogin {
+  height: 6vh;
+  background-color: rgba(255, 255, 255, 0.615);
+  padding: 10px;
+  border-radius: 10px;
+  justify-self: end;
+  filter: invert(100%);
+  cursor: pointer;
+  margin-right: 15px;
+  transition: 0.5s;
+}
+
+.iconLogin:hover {
+  background-color: rgba(0, 0, 0, 0.253);
+  transform: scale(1.1);
+}
+
+.loginBodyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgLoginBodyContainer {
+  width: calc(50vw + 150px);
+  min-width: 220px;
+  height: 500px;
+  position: relative;
+}
+
+.ballImgLogin {
+  width: 20vw;
+  min-width: 150px;
+  position: absolute;
+  left: 0;
+  animation: rebound 1s 2s ease-out infinite;
+
+  z-index: 1;
+}
+
+@keyframes rebound {
+  0%,
+  100% {
+    top: 0; /* Empieza y termina en la posición de origen */
+  }
+  50% {
+    top: -20px; /* Punto más alto del rebote */
+  }
+}
+
+.marioImgLogin {
+  width: 30vw;
+  min-width: 200px;
+  position: absolute;
+  right: 0;
+  top: 500px;
+  transform: translatex();
+  animation: slideUp 1s 2s ease-out forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    top: 500px; /* Empieza desde abajo */
+  }
+  100% {
+    top: 0px; /* Termina en la posición de origen */
+  }
+}
+
+.loginFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0.09194698387167366) 25%,
+    rgba(0, 0, 0, 0.2684175721069678) 40%,
+    rgba(0, 0, 0, 0.5849441827512255) 60%,
+    rgba(0, 0, 0, 0.7838237345719538) 80%,
+    rgba(0, 0, 0, 0.83704502308736) 90%
+  );
+}
+
+.loginFooter p {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+}
+.loginFooter a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #40affe;
+}
+
+.blur-out-expand {
+  animation: blur-out-expand 0.4s linear both;
+}
+
+@keyframes blur-out-expand {
+  0% {
+    transform: scale(1);
+    filter: blur(0.01px);
+  }
+  100% {
+    transform: scale(2);
+    filter: blur(12px);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 900px) {
+  @keyframes rebound {
+    0%,
+    100% {
+      top: 100px; /* Empieza y termina en la posición de origen */
+    }
+    50% {
+      top: 80px; /* Punto más alto del rebote */
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      top: 500px; /* Empieza desde abajo */
+    }
+    100% {
+      top: 100px; /* Termina en la posición de origen */
+    }
+  }
+
+  .loginFooter p {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  @keyframes slideUp {
+    0% {
+      top: 500px; /* Empieza desde abajo */
+    }
+    100% {
+      top: -110px; /* Termina en la posición de origen */
+    }
+  }
+}
