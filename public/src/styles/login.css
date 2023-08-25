@@ -230,12 +230,65 @@ nav {
     transform: scale(2);
     filter: blur(12px);
     opacity: 0;
+    visibility: hidden;
   }
 }
 
+.modalLogin {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
+  transition: 1s;
+}
 
+.modalLoginActive {
+  display: flex;
+}
 
+.modalLoginForm {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  min-width: 230px;
+}
 
+.loginInfContainer {
+  display: flex;
+  margin-top: 15px;
+}
+.loginInfContainer img {
+  width: 40px;
+  border: 1px solid white;
+  border-radius: 5px 0 0 5px;
+  padding: 5px;
+}
+
+.loginInfContainer input {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 0 5px 5px 0;
+  font-size: 16px;
+  padding-left: 5px;
+  outline: none;
+}
+.modalFormButton {
+  margin-top: 15px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: #7f1abb;
+  transition: 0.3s;
+}
+.modalFormButton:hover {
+  transform: scale(1.1);
+}
 
 @media screen and (max-width: 900px) {
   @keyframes rebound {
