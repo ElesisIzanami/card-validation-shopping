@@ -1,6 +1,7 @@
 import { navigateTo } from "./public/src/lib/router";
 
 
+
 const defaultRoute = '/';
 
 window.onpopstate = () => {    

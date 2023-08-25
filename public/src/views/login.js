@@ -45,19 +45,37 @@ const loginEstructure = `
 loginSection.innerHTML =loginEstructure
 loginContainer.appendChild(loginSection)
 
-const iconLogin = loginContainer.querySelector('.iconLogin')
-const imgLoginBodyContainer = loginContainer.querySelector('.imgLoginBodyContainer')
-
-const modalLogin = loginContainer.querySelector('.modalLogin')
+const iconLogin = loginContainer.querySelector('.iconLogin');
+const imgLoginBodyContainer = loginContainer.querySelector('.imgLoginBodyContainer');
+const modalLogin = loginContainer.querySelector('.modalLogin');
+const modalLoginForm = loginContainer.querySelector('.modalLoginForm');
+const modalFormButton = loginContainer.querySelector('.modalFormButton')
+const inputEmail=loginContainer.querySelector('.input-email')
 
 iconLogin.addEventListener('click',()=>{
-    console.log("HOLA xD")
     imgLoginBodyContainer.classList.add("blur-out-expand")
     modalLogin.classList.add("modalLoginActive")
-    navegando("./shop")
 })
+
+
+
+modalLoginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = inputEmail.value;
+  localStorage.setItem('email', email);
+  localStorage.setItem('precio', "120");
+  navegando('/shop');
+});
+
+
 
 return loginContainer
 }
 
 export default login;
+
+
+
+/* const copyText = (userName)=>{
+  const newArray = [...userName];
+} */

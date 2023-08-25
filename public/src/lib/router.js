@@ -5,7 +5,7 @@ function navigateTo(hash){
         const route = routes.find((elemento) => elemento.path === hash); 
 
         if (route && route.component) {
-                window.history.pushState(
+                    window.history.pushState(
                     {}, 
                     route.path, 
                     window.location.origin + route.path, 
