@@ -1,0 +1,122 @@
+
+.navShop {
+    display: flex;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 10%,
+      rgba(0, 0, 0, 0.09194698387167366) 25%,
+      rgba(0, 0, 0, 0.2684175721069678) 40%,
+      rgba(0, 0, 0, 0.5849441827512255) 60%,
+      rgba(0, 0, 0, 0.7838237345719538) 80%,
+      rgba(0, 0, 0, 0.83704502308736) 90%
+    );
+    justify-content: space-between;
+    align-items: center;
+   
+  }
+
+
+.menuHam{
+    filter: invert(100%);
+    margin-left: 10px;
+    cursor: pointer;
+}
+.nav-logo-shop{
+    height: 8vh;
+    display: none;
+}
+
+.navbar-left{
+    display: flex;
+}
+.navbar-left ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar-left ul li{
+    list-style: none;
+}
+.navbar-left ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px;
+    font-family: 'Quicksand', sans-serif;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+}
+
+.navbar-left ul li a:hover{
+   
+    border: solid 1px whitesmoke;
+    border-radius: 8px;
+}
+.navbar-right ul{
+    display: flex;
+    margin-right: 10px;
+    align-items: center;
+}
+
+.navbar-right ul li{
+    list-style: none;
+}
+
+.navbar-right ul li:nth-child(1){
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    margin-right: 10px;
+}
+
+.navbar-shopping-cart{
+    position: relative;
+    cursor: pointer;
+}
+
+.navbar-shopping-cart img{
+    width: 30px;
+    filter: invert(100%);
+}
+.shopping-cart-count{
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: -6px;
+    right: -3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inactive{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    .nav-logo-shop{
+        display: block;
+    }
+    .navbar-left ul{
+        display: none;
+    }
+
+    .navbar-right ul li:nth-child(1){
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+    .menuHam{
+        display: none;
+    }
+  }

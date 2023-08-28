@@ -3,7 +3,7 @@ import "../styles/login.css"
 function login(navegando){
     
 const loginContainer = document.createElement("section")
-loginContainer.classList.add("loginContainer")
+loginContainer.classList.add("Container")
 const loginSection = document.createElement("div")
 loginSection.classList.add("loginSection")
 

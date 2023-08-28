@@ -69,8 +69,8 @@ body {
   }
 }
 
-.loginContainer {
-  background: radial-gradient(
+.Container {
+  background: radial-gradient(  
     circle,
     rgba(255, 168, 50, 1) 30%,
     rgba(254, 131, 48, 1) 50%,
