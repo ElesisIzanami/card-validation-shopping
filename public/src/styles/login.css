@@ -4,9 +4,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
-  overflow: hidden; /* Ocultar la barra de desplazamiento */
-}
+ /* body {
+  overflow: hidden; 
+ } */
 
 .loader {
   width: 100%;
@@ -70,6 +70,7 @@ body {
 }
 
 .Container {
+  overflow: hidden; 
   background: radial-gradient(  
     circle,
     rgba(255, 168, 50, 1) 30%,
@@ -83,7 +84,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.loginSection {
+.containerInner{
   height: 100%;
   display: grid;
   grid-template-rows: 16vh 4fr 1fr;

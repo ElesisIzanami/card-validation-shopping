@@ -5,7 +5,7 @@ function login(navegando){
 const loginContainer = document.createElement("section")
 loginContainer.classList.add("Container")
 const loginSection = document.createElement("div")
-loginSection.classList.add("loginSection")
+loginSection.classList.add("containerInner")
 
 const loginEstructure = `
 <div class="loader">
@@ -17,11 +17,11 @@ const loginEstructure = `
   <form class="modalLoginForm">
       <h2>Login</h2>
       <div class="loginInfContainer">
-        <img src="../../assets/user.png" class="formSpan"></img>
+        <img src="../../assets/icons/user.png" class="formSpan"></img>
         <input type="text" placeholder="platzi@example.com" class="input input-email">
       </div>
       <div class="loginInfContainer">
-        <img src="../../assets/candado-abierto.png" class="formSpan"></img>
+        <img src="../../assets/icons/candado-abierto.png" class="formSpan"></img>
         <input type="password" placeholder="*********" class="input input-password">
       </div>
       
@@ -30,7 +30,7 @@ const loginEstructure = `
 </div>
 <nav>
     <img class="logoGameShop" src="../../assets/logoGameAncho.png" alt="logoGameShop">
-    <img class="iconLogin" src="../../assets/user.png" alt="iconLogin">
+    <img class="iconLogin" src="../../assets/icons/user.png" alt="iconLogin">
 </nav>
 <div class="loginBodyContainer">
     <div class="imgLoginBodyContainer">
