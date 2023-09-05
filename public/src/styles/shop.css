@@ -167,7 +167,31 @@ aside {
   filter: invert(100%);
 }
 
+.shopping-cart{
+  display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: center;
+}
 
+.shopping-cart img {
+  width: 100px;
+}
+.shopping-cart p{
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+.shopping-cart p:nth-child(3){
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+.shopping-cart .closeIcon {
+  width: 15px;
+  cursor: pointer;
+}
 
 .order {
   display: flex;

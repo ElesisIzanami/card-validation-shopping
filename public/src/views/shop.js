@@ -1,9 +1,11 @@
 import "../styles/shop.css";
 import { mmorpg, racing } from '../lib/data';
 
+
+
 function shop(navegateTo) {
 
-  const email = localStorage.getItem('email');
+  const userName = localStorage.getItem('userName');
 
   const shopContainer = document.createElement('section');
   shopContainer.classList.add('container-shop')
@@ -39,7 +41,7 @@ function shop(navegateTo) {
 
     <div class="navbar-right">
       <ul>
-        <li class="navbar-email">${email}</li>
+        <li class="navbar-email">${userName}</li>
         <li class="navbar-shopping-car">
           <img src="../../assets/icons/icon_shopping_cart.svg" alt="shopping cart">
           <div class="shopping-car-count"></div>
@@ -165,6 +167,7 @@ function shop(navegateTo) {
 
   //shopping cart my Orders//
   const ordersCartContainers =shopSection.querySelector('.ordersCartContainers');
+  const buttonGoPay =shopSection.querySelector('.buttonGoPay');
   const totalAmount= shopSection.querySelector('.total-amount');
 
   menuHam.addEventListener('click',()=>{
@@ -288,8 +291,94 @@ function renderProducts(arr){
 renderProducts(mmorpg);
 
 
+
+let totalFinal =[]
+
+function renderMyOrder(product){
+  const ordersCartBox = document.createElement('div')
+  ordersCartBox.classList.add('shopping-cart')
+
+  const imgMyOrder = document.createElement("img");
+  imgMyOrder.setAttribute("src", product.image);
+  imgMyOrder.classList.add('shopping-cart-img')
+
+  const productNameMyOrder = document.createElement("p");
+  productNameMyOrder.innerHTML =  product.name;
+
+  const productPriceMyOrder = document.createElement("p");
+  productPriceMyOrder.innerHTML = "$ "+ product.price;
   
-  const price = localStorage.getItem('precio');
+  const imgIconDelete = document.createElement("img");
+  imgIconDelete.setAttribute("src", "../../assets/icons/borrar.png");
+  imgIconDelete.classList.add('closeIcon')
+
+  ordersCartBox.appendChild(imgMyOrder);
+  ordersCartBox.appendChild(productNameMyOrder);
+  ordersCartBox.appendChild(productPriceMyOrder);
+  ordersCartBox.appendChild(imgIconDelete);
+  ordersCartContainers.appendChild(ordersCartBox);
+
+  /*---- Actualizamos la cantidad de productos y sumamos el resultado.*/
+  console.log("totalAmount: ",totalAmount)
+  totalAmount.innerHTML = '$ 0.00'
+   
+  countShoppingCart.innerHTML = ordersCartContainers.childElementCount;
+
+  totalAmount.innerHTML = Number(totalAmount.innerHTML.substring(1)) + product.price;
+  arrayProductCart.push(Number(totalAmount.innerHTML));
+
+  totalAmount.innerHTML ="$ "+ sumProducts(arrayProductCart);
+  console.log("arrayProductCart",arrayProductCart)
+  console.log(sumProducts(arrayProductCart))
+
+  totalFinal.push(sumProducts(arrayProductCart))
+  if(totalFinal.length>1){
+      totalFinal.shift()
+  }
+
+  console.log("totalFinal SUMANDO++++++++",totalFinal)
+
+   /*Elimina producto de My Order* y actualiza eldato en el carrito*/
+   imgIconDelete.addEventListener("click", ()=>{
+      console.log("eliminando")
+      ordersCartBox.remove();
+      countShoppingCart.innerHTML=ordersCartContainers.childElementCount;
+
+      const getTotalsArray = document.querySelectorAll(".total-amount");// nodo o lista de los elementos con esa clase
+
+      const getTotalNumber = Number(getTotalsArray[0].innerHTML.substring(1));//getTotal[0].innerHTML = totalAmount.innerHTML
+     
+      let totalRest= getTotalNumber - product.price;
+      getTotalsArray[0].innerHTML = "$ " + (getTotalNumber - product.price);
+
+      totalFinal.push(totalRest)
+      totalFinal.shift()
+      console.log("totalFinal RESTANDO--------: ",totalFinal)
+      
+      arrayProductCart.pop(); 
+    
+  })
+  
+}
+
+function sumProducts(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+      sum = sum + arr[i];
+  }
+  return sum;
+}
+
+buttonGoPay.addEventListener('click',()=>{
+
+  console.log("viajando")
+  console.log("totalFinal desde GOPAY",totalFinal)
+ 
+
+})
+
+  
+  
 
   
   /* const h1 = document.createElement('h1');

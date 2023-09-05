@@ -61,9 +61,8 @@ iconLogin.addEventListener('click',()=>{
 
 modalLoginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const email = inputEmail.value;
-  localStorage.setItem('email', email);
-  localStorage.setItem('precio', "120");
+  const userName = inputEmail.value;
+  localStorage.setItem('userName', userName);
   navegando('/shop');
 });
 
