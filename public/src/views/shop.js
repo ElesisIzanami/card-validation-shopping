@@ -1,5 +1,5 @@
 import "../styles/shop.css";
-import { mmorpg, racing } from '../lib/data';
+import { data} from '../lib/data';
 
 
 
@@ -30,12 +30,6 @@ function shop(navegateTo) {
         <li>
           <a class="navRacingButton">Racing</a>
         </li>
-        <li>
-          <a href="/">Toys</a>
-        </li>
-        <li>
-          <a href="/">Others</a>
-        </li>
       </ul>
     </div>
 
@@ -52,40 +46,27 @@ function shop(navegateTo) {
     <div class="mobile-menu inactive">
       <ul>
         <li>
-          <a href="/">CATEGORIES</a>
+          <a>CATEGORIES</a>
         </li>
         <li>
-          <a href="/">All</a>
+          <a class="mobilAllButton">All</a>
         </li>
         <li>
-          <a href="/">Racing</a>
+          <a class="mobilRacingButton">Racing</a>
         </li>
         <li>
-          <a href="/">Electronics</a>
+          <a class="mobilMmorpgButton">Mmorpg</a>
         </li>
+      </ul>
+      <ul>
         <li>
-          <a href="/">Furnitures</a>
-        </li>
-        <li>
-          <a href="/">Toys</a>
-        </li>
-        <li>
-          <a href="/">Other</a>
+          <a class="mobilMyOrdersButton">My orders</a>
         </li>
       </ul>
   
       <ul>
         <li>
-          <a href="/">My orders</a>
-        </li>
-        <li>
-          <a href="/">My account</a>
-        </li>
-      </ul>
-  
-      <ul>
-        <li>
-          <a href="/" class="email">platzi@example.com</a>
+          <a class="email">${userName} 😆🎮</a>
         </li>
         <li>
           <a href="/" class="sign-out">Sign out</a>
@@ -95,9 +76,14 @@ function shop(navegateTo) {
   </nav>
   
   <div class="selectContainer">
+    <label for="" class="labelSearch">
+      <img src="../../assets/icons/search.png">
+      <input class="inputSearch" type="text" placeholder="search to game">
+    </label>
     <select class="selectButton">
-      <option value="menor_a_mayor">Menor a Mayor Precio</option>
-      <option value="mayor_a_menor">Mayor a Menor Precio</option>
+      <option>Sort by :</option>
+      <option value="lowest_to_higuest">Price from Lowest to Highest</option>
+      <option value="higuest_to_lowest">Price from Highest to Lowest</option>
     </select>
   </div>
   
@@ -142,8 +128,52 @@ function shop(navegateTo) {
   </div>
   `
   shopSection.innerHTML= shopEstructure;
+  //mobilMenu Selectors//
+  const mobilAllButton =shopSection.querySelector('.mobilAllButton');
+  const mobilRacingButton =shopSection.querySelector('.mobilRacingButton');
+  const mobilMmorpgButton =shopSection.querySelector('.mobilMmorpgButton');
+  const mobilMyOrdersButton =shopSection.querySelector('.mobilMyOrdersButton');
 
-  //nav//
+  mobilAllButton.addEventListener('click',()=>{
+    stateCardContainer="stateAll"
+    renderProducts(data);
+    cardsContainer.classList.remove('opacity')
+    productDetailContainer.classList.add("inactive"); 
+    mobileMenu.classList.add('inactive')
+  })
+
+  mobilRacingButton.addEventListener('click',()=>{
+    stateCardContainer="stateRacing"
+    renderProducts(data);
+    cardsContainer.classList.remove('opacity')
+    productDetailContainer.classList.add("inactive"); 
+    mobileMenu.classList.add('inactive')
+  })
+
+  mobilMmorpgButton.addEventListener('click',()=>{
+    stateCardContainer="stateMmorpg"
+    renderProducts(data);
+    cardsContainer.classList.remove('opacity')
+    productDetailContainer.classList.add("inactive"); 
+    mobileMenu.classList.add('inactive')
+  });
+
+  mobilMyOrdersButton.addEventListener('click',()=>{
+    const isproductDetailClosed = productDetailContainer.classList.contains('inactive');
+    const cardsContainerOpacity =cardsContainer.classList.contains('opacity')
+      if(!isproductDetailClosed || !cardsContainerOpacity){
+        productDetailContainer.classList.add("inactive");
+        cardsContainer.classList.add('opacity')
+    }else{  
+      cardsContainer.classList.toggle("opacity")
+    }
+    shoppingCarContainer.classList.toggle("inactive")     
+    mobileMenu.classList.add('inactive')
+  });
+  
+
+
+  //nav selectors//
   const navRacingButton =shopSection.querySelector('.navRacingButton');
   const navAllButton =shopSection.querySelector('.navAllButton');
   const navMmorpgButton =shopSection.querySelector('.navMmorpgButton');
@@ -156,8 +186,9 @@ function shop(navegateTo) {
   const shoppingCarContainer =shopSection.querySelector('.shoppingCarContainer');
   const cardsContainer =shopSection.querySelector('.cards-container');
 
+  
 
-  //Product Detail//
+  //Product Detail selectors//
   const productDetailContainer =shopSection.querySelector('.productDetailContainer');
   const productDetailButtonClose =shopSection.querySelector('.productDetailButtonClose');
   const productDetailImg =shopSection.querySelector('.productDetailImg');
@@ -165,10 +196,14 @@ function shop(navegateTo) {
   const productDetailName =shopSection.querySelector('.productDetailName');
   const productDetailDescription =shopSection.querySelector('.productDetailDescription');
 
-  //shopping cart my Orders//
+  //shopping cart my Orders selectors//
   const ordersCartContainers =shopSection.querySelector('.ordersCartContainers');
   const buttonGoPay =shopSection.querySelector('.buttonGoPay');
   const totalAmount= shopSection.querySelector('.total-amount');
+
+  let stateCardContainer="stateMmorpg"
+  let arrayProductCart=[]
+  let totalFinal =[]
 
   menuHam.addEventListener('click',()=>{
     const isShoppingCarContainerClosed = shoppingCarContainer.classList.contains('inactive');
@@ -176,13 +211,14 @@ function shop(navegateTo) {
       shoppingCarContainer.classList.add("inactive");
   }
     mobileMenu.classList.toggle("inactive")
+    cardsContainer.classList.remove("opacity")
 
   })
 
   navRacingButton.addEventListener('click',(e)=>{
     e.preventDefault()
-    cardsContainer.innerHTML=""
-    renderProducts(racing);
+    stateCardContainer="stateRacing"
+    renderProducts(data);
     cardsContainer.classList.remove('opacity')
     productDetailContainer.classList.add("inactive"); 
   })
@@ -190,8 +226,9 @@ function shop(navegateTo) {
   navAllButton.addEventListener('click',(e)=>{
     e.preventDefault()
     cardsContainer.innerHTML=""
-    renderProducts(mmorpg);
-    renderProducts(racing);
+    stateCardContainer="stateAll"
+    renderProducts(data);
+   
     cardsContainer.classList.remove('opacity')
     productDetailContainer.classList.add("inactive"); 
   })
@@ -199,7 +236,8 @@ function shop(navegateTo) {
   navMmorpgButton.addEventListener('click',(e)=>{
     e.preventDefault()
     cardsContainer.innerHTML=""
-    renderProducts(mmorpg); 
+    stateCardContainer="stateMmorpg"
+    renderProducts(data); 
     cardsContainer.classList.remove('opacity')
     productDetailContainer.classList.add("inactive");   
   })
@@ -212,28 +250,35 @@ function shop(navegateTo) {
         mobileMenu.classList.add("inactive");
         productDetailContainer.classList.add("inactive");
         cardsContainer.classList.add('opacity')
-    }else{
-      
+    }else{  
       cardsContainer.classList.toggle("opacity")
     }
-    //cardsContainer.classList.remove('opacity')
-    shoppingCarContainer.classList.toggle("inactive")
-    
-    
+    shoppingCarContainer.classList.toggle("inactive")    
   })
   
   productDetailButtonClose.addEventListener('click',()=>{
-    productDetailContainer.classList.add("inactive");
-   
+    productDetailContainer.classList.add("inactive");  
     cardsContainer.classList.remove('opacity')
   })
 
-let arrayProductCart=[]
 
+
+//RENDER CARDS --MAIN CONTAINER//
 function renderProducts(arr){
-  arr.forEach( (product) => {
-  //CREATE CARDS --MAIN CONTAINER
+  cardsContainer.innerHTML=""
+  let filteredArray=[];
 
+  if (stateCardContainer==='stateMmorpg'){
+    filteredArray = arr.filter(element => element.type === 'mmorpg');
+  }
+  if (stateCardContainer==='stateRacing'){
+    filteredArray = arr.filter(element => element.type === 'racing');
+  }
+  if (stateCardContainer==='stateAll'){
+    filteredArray = arr;
+  }
+    
+  filteredArray.forEach( (product) => { 
       const productCard = document.createElement('div');
       productCard.classList.add('product-card');
 
@@ -252,8 +297,6 @@ function renderProducts(arr){
           
           const productName = document.createElement('p');
           productName.innerText = product.name;
-
-      
 
       const iconAddCart = document.createElement('img');
       iconAddCart.classList.add("iconAddCart");
@@ -288,11 +331,48 @@ function renderProducts(arr){
   });
 }
 
-renderProducts(mmorpg);
+renderProducts(data);
 
+///INPUT and SELECT///
+const inputSearch = shopSection.querySelector('.inputSearch');
+inputSearch.addEventListener('keyup',(e)=>{
+  const keyword= e.target.value;
+  const dataFilterSearch= data.filter((game) => {
+    return game.name.toLowerCase().includes(keyword.toLowerCase());
+  });
+  renderProducts(dataFilterSearch)
+})
 
+const selectButton = shopSection.querySelector('.selectButton');
 
-let totalFinal =[]
+function filterPriceMenor(data){
+  const sortPriceMenor = data.sort((a, b) => a.price - b.price);
+  return sortPriceMenor;
+}
+
+function filterPriceMayor(data){
+  const sortPriceMayor = data.sort((a, b) => b.price - a.price);
+  return sortPriceMayor;
+}
+
+selectButton.addEventListener('change',()=>{
+    productDetailContainer.classList.add("inactive");
+    shoppingCarContainer.classList.add('inactive'); 
+    cardsContainer.classList.remove("opacity");
+    mobileMenu.classList.add("inactive");
+
+    if (selectButton.value === "lowest_to_higuest" && stateCardContainer){
+      const dataFilterMenor= filterPriceMenor(data);
+      renderProducts(dataFilterMenor)
+    }
+    else if (selectButton.value === "higuest_to_lowest" && stateCardContainer){
+      const dataFilterMayor= filterPriceMayor(data);
+      renderProducts(dataFilterMayor)
+    }else{
+      renderProducts(data)
+    }
+  })
+
 
 function renderMyOrder(product){
   const ordersCartBox = document.createElement('div')
@@ -319,6 +399,7 @@ function renderMyOrder(product){
   ordersCartContainers.appendChild(ordersCartBox);
 
   /*---- Actualizamos la cantidad de productos y sumamos el resultado.*/
+  
   console.log("totalAmount: ",totalAmount)
   totalAmount.innerHTML = '$ 0.00'
    
@@ -338,7 +419,8 @@ function renderMyOrder(product){
 
   console.log("totalFinal SUMANDO++++++++",totalFinal)
 
-   /*Elimina producto de My Order* y actualiza eldato en el carrito*/
+   ///Elimina producto de My Order* y actualiza eldato en el carrito///
+   
    imgIconDelete.addEventListener("click", ()=>{
       console.log("eliminando")
       ordersCartBox.remove();
