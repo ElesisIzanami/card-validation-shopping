@@ -455,6 +455,7 @@ buttonGoPay.addEventListener('click',()=>{
 
   console.log("viajando")
   console.log("totalFinal desde GOPAY",totalFinal)
+  navegateTo('/pay')
  
 
 })
