@@ -1,0 +1,131 @@
+.container-pay {
+  background: radial-gradient(
+    circle,
+    rgba(127, 26, 187, 1) 50%,
+    rgba(103, 21, 152, 1) 100%
+  );
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.containerInner-pay {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 16vh 4fr 1fr;
+}
+
+.navPay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-logo-pay {
+  width: 150px;
+}
+
+.navbar-right-pay {
+  display: flex;
+}
+
+.formSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(187, 212, 212);
+}
+
+.formContainer {
+  background-color: rgb(187, 212, 212);
+  display: grid;
+  grid-template-rows: auto;
+  width: 25%;
+  min-width: 280px;
+}
+
+
+.paymentAmount{
+  text-align: center;
+  margin-bottom: 30px;
+}
+.paymentAmountTotal{
+  color: rgb(179, 118, 3);
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+.formContainer label {
+  font-family: "Quicksand", sans-serif;
+}
+
+.formContainer input {
+  margin-top: 3px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  box-shadow: 0px 1px 5px 1px rgb(129, 129, 129);
+  font-size: 16px;
+}
+
+.formName,
+.formNumberCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.formNumberCard {
+  margin-top: 10px;
+}
+.groupFlexbox {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formGroupSelect {
+  display: flex;
+  justify-content: space-between;
+}
+.formGroupSelect select {
+  margin-top: 3px;
+  border-radius: 10px;
+  height: 35px;
+  width: 60px;
+  border: none;
+  box-shadow: 0px 1px 5px 1px rgb(129, 129, 129);
+}
+
+.positioncvv {
+  display: flex;
+  flex-direction: column;
+}
+
+.positioncvv input {
+  width: 80px;
+}
+
+.btnEnviar {
+  margin-top: 20px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: "Quicksand", sans-serif;
+  border: none;
+  color: grey;
+  box-shadow: 0px 1px 5px 1px rgb(129, 129, 129);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.padlock{
+  width: 20px;
+  margin-right: 5px;
+  filter: invert(40%);
+}
+
+

@@ -94,7 +94,7 @@ function shop(navegateTo) {
           <p class="title">My order</p>
         </div>
     
-        <div class="my-order-content">
+        <form class="myOrderContent">
             <div class="ordersCartContainers"></div>
             <div class="order">
               <p>Total</p>
@@ -104,7 +104,7 @@ function shop(navegateTo) {
             <button class="buttonGoPay">
                 Go Pay         
             </button>
-        </div>    
+        </form>    
     </aside>
     
     <aside class="productDetailContainer inactive">
@@ -197,6 +197,7 @@ function shop(navegateTo) {
   const productDetailDescription =shopSection.querySelector('.productDetailDescription');
 
   //shopping cart my Orders selectors//
+  const myOrderContent =shopSection.querySelector('.myOrderContent');
   const ordersCartContainers =shopSection.querySelector('.ordersCartContainers');
   const buttonGoPay =shopSection.querySelector('.buttonGoPay');
   const totalAmount= shopSection.querySelector('.total-amount');
@@ -451,14 +452,17 @@ function sumProducts(arr) {
   return sum;
 }
 
-buttonGoPay.addEventListener('click',()=>{
+//localStorage.setItem('finalPrice', totalFinal[0]);
 
-  console.log("viajando")
-  console.log("totalFinal desde GOPAY",totalFinal)
+
+myOrderContent.addEventListener('submit',(e) => {
+  e.preventDefault();
+
+  const totalFinalShop = totalFinal[0];
+  localStorage.setItem('totalFinalShop', totalFinalShop);
   navegateTo('/pay')
- 
-
-})
+// Devolver una promesa que se resolverá cuando el valor se guarde
+});
 
   
   
