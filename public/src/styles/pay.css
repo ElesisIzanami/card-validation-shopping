@@ -107,7 +107,7 @@
   width: 80px;
 }
 
-.btnEnviar {
+.btnPagar {
   margin-top: 20px;
   height: 50px;
   border-radius: 10px;
@@ -128,4 +128,9 @@
   filter: invert(40%);
 }
 
+.alertIsValid{
+  text-align: center;
+  font-size: 11px;
+  color: rgb(168, 0, 0);
+}
 
