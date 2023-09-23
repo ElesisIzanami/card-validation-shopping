@@ -34,6 +34,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(187, 212, 212);
+  position: relative;
 }
 
 .formContainer {
@@ -44,12 +45,11 @@
   min-width: 280px;
 }
 
-
-.paymentAmount{
+.paymentAmount {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
-.paymentAmountTotal{
+.paymentAmountTotal {
   color: rgb(179, 118, 3);
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
@@ -122,15 +122,115 @@
   justify-content: center;
   align-items: center;
 }
-.padlock{
+.padlock {
   width: 20px;
   margin-right: 5px;
   filter: invert(40%);
 }
 
-.alertIsValid{
+.alertIsValid {
   text-align: center;
   font-size: 11px;
   color: rgb(168, 0, 0);
 }
+.mensajeFinalContainer {
+  position: absolute;
+  z-index: 3;
+  background-color: white;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: 1s;
+}
+.mensajeFinal {
+  text-align: center;
+  font-size: 25px;
+  font-family: "Quicksand", sans-serif;
 
+  color: #7f1abb;
+}
+
+.loaderPay {
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  animation: loader 2.5s linear forwards;
+}
+@keyframes loaderPay {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.loaderPay div {
+  background: #7f1abb;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 10px;
+
+  transform: scale(0);
+  animation: scaling 2s ease-in-out infinite;
+}
+
+.loaderPay div:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.loaderPay div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.loaderPay div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes scaling {
+  0%,
+  100% {
+    transform: scale(0.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.logoTarjetContainer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgLogotarjet {
+  width: 60px;
+  opacity: 0.3;
+  filter: brightness(0.5);
+  transition: 0.5s;
+}
+
+.opacityPay {
+  opacity: 1;
+  filter: brightness(1);
+  display: flex;
+}

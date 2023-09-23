@@ -63,9 +63,21 @@ const payEstructure = `
         </button>
 
         <!-------- MENSAJE FINAL ------->
-        <div class="mensajeFinal"></div>
+        <div class="mensajeFinalContainer">
+          <p class="mensajeFinal"></p>
+        </div>
 
-        <div class="logoTarjetContainer"></div>
+        <div class="logoTarjetContainer">
+          <img src="../../assets/icons/visa.png" alt="logo" class="imgLogotarjet imgVisa">
+          <img src="../../assets/icons/american.png" alt="logo" class="imgLogotarjet imgAmerican">
+          <img src="../../assets/icons/mastercard.png" alt="logo" class="imgLogotarjet imgMasterCard">
+          <img src="../../assets/icons/dinners.png" alt="logo" class="imgLogotarjet imgDinners">
+        </div>
+        <div class="loaderPay">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
     </form> 
 </section>
 
@@ -87,9 +99,18 @@ const payEstructure = `
 
 // ------------------------------NUMERO DE TARJETA---------------------------
     const alertIsValid = paySection.querySelector('.alertIsValid');  
-    const logoTarjetContainer = paySection.querySelector('.logoTarjetContainer'); 
     const inputNumeroTarjeta = paySection.querySelector('.inputNumeroTarjeta');
-     
+    const imgVisa = paySection.querySelector('.imgVisa');
+    const imgAmerican = paySection.querySelector('.imgAmerican');
+    const imgMasterCard = paySection.querySelector('.imgMasterCard');
+    const imgDinners = paySection.querySelector('.imgDinners');
+
+    const logoImgArray =paySection.querySelectorAll('.imgLogotarjet');
+
+    console.log(logoImgArray[0])
+
+    let cardNumberFiguresArray =[]
+
       inputNumeroTarjeta.addEventListener('input', (e) => {
         let valorInputNumeroTarjeta = e.target.value;
         
@@ -105,7 +126,45 @@ const payEstructure = `
     
           cardNumberFigures =inputNumeroTarjeta.value.replace(/\s/g, '');
         console.log("cardNumberFigures",cardNumberFigures)
-          
+
+        cardNumberFiguresArray.push(cardNumberFigures)
+        
+        if(cardNumberFiguresArray.length>1){
+          cardNumberFiguresArray.shift()
+        }
+
+        console.log("cardNumberFiguresArray",cardNumberFiguresArray)
+
+        console.log(cardNumberFiguresArray[0])
+
+
+        
+
+            switch (cardNumberFiguresArray[0]){
+
+            case "4":
+              imgVisa.classList.add('opacity');
+              break;
+            case "52":
+              imgMasterCard.classList.add('opacity');
+              break;
+            case "34":
+              imgAmerican.classList.add('opacity');
+              break;
+            case "36":
+              imgDinners.classList.add('opacity');
+              break;
+            default:
+              console.log("nada")
+          } 
+
+
+          if(!cardNumberFigures){
+            logoImgArray.forEach(e=>{
+              e.classList.remove('opacity')
+            })
+          }
+
           // DESAPARECER ALERTA CUANDO ELIMINAMOS UN DIGITO MENOR A 16
         if(cardNumberFigures.length<16) {
           alertIsValid.innerText=""
@@ -116,6 +175,8 @@ const payEstructure = `
         }
     
         });
+
+        
 
     
 
@@ -186,21 +247,29 @@ function isValid(creditCardNumber) {
   // ------------------------------- VALIDANDO EL NÚMERO DE LA TARJETA --------------------------- 
     
   const mensajeFinal = paySection.querySelector('.mensajeFinal');
+  const mensajeFinalContainer = paySection.querySelector('.mensajeFinalContainer');
+  const loaderPay = paySection.querySelector('.loaderPay');
   
   const btnPagar = paySection.querySelector('.btnPagar');
   btnPagar.addEventListener('click', (event) => {
-    
+    event.preventDefault();
     
     let numberIsValid = isValid(cardNumberFigures)
   
     if(numberIsValid) {
-      alertIsValid.innerText=("La tarjeta es válida.")
-      mensajeFinal.innerText = ('Gracias por tu compra!');
+      alertIsValid.innerText=("La tarjeta es válida.");
       setTimeout(()=>{
-        navigateTo('/shop')
-      }, 3000);
+        mensajeFinalContainer.classList.add('opacityPay');
+        loaderPay.classList.add('opacityPay');
+        mensajeFinal.innerText = ('Gracias por tu compra!');
+      },1000)
       
-  
+      
+
+       setTimeout(()=>{
+        navigateTo('/shop')
+      }, 4500); 
+      
     }else {
       alertIsValid.innerText=("La tarjeta no es válida. Ingrese correctamente el número")
     }
