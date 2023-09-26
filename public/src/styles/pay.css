@@ -47,14 +47,14 @@
 
 .paymentAmount {
   text-align: center;
-  margin-bottom: 20px;
   font-family: "Poppins", sans-serif;
+  font-size: 14px;
 }
 .paymentAmountTotal {
   color: orange;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
 }
 .formContainer label {
   font-family: "Quicksand", sans-serif;
@@ -219,7 +219,8 @@
 }
 
 .logoTarjetContainer {
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
 }

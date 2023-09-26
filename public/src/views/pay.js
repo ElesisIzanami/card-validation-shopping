@@ -19,6 +19,14 @@ const payEstructure = `
 <section class="formSection">
     <form class="formContainer">
         <span class="paymentAmount">Payment amount <span class="paymentAmountTotal">$${totalFinalShop}</span></span>
+        
+        <div class="logoTarjetContainer">
+          <img src="../../assets/icons/visa.png" alt="logo" class="imgLogotarjet imgVisa">
+          <img src="../../assets/icons/american.png" alt="logo" class="imgLogotarjet imgAmerican">
+          <img src="../../assets/icons/mastercard.png" alt="logo" class="imgLogotarjet imgMasterCard">
+          <img src="../../assets/icons/dinners.png" alt="logo" class="imgLogotarjet imgDinners">
+        </div>
+
         <div class= "formName">
             <label for="inputNombreTarjeta">Owner Name</label>
             <!---------------- INPUT NOMBRE DE TARJETA ----------------->
@@ -67,12 +75,7 @@ const payEstructure = `
           <p class="mensajeFinal"></p>
         </div>
 
-        <div class="logoTarjetContainer">
-          <img src="../../assets/icons/visa.png" alt="logo" class="imgLogotarjet imgVisa">
-          <img src="../../assets/icons/american.png" alt="logo" class="imgLogotarjet imgAmerican">
-          <img src="../../assets/icons/mastercard.png" alt="logo" class="imgLogotarjet imgMasterCard">
-          <img src="../../assets/icons/dinners.png" alt="logo" class="imgLogotarjet imgDinners">
-        </div>
+        
         <div class="loaderPay">
           <div></div>
           <div></div>
