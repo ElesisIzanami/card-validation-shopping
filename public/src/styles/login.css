@@ -16,7 +16,7 @@
   justify-content: center;
   background: white;
   position: absolute;
-  z-index: 3;
+  z-index: 4;
 
   animation: loader 2s linear forwards;
 }
@@ -205,6 +205,7 @@ nav {
     rgba(0, 0, 0, 0.7838237345719538) 80%,
     rgba(0, 0, 0, 0.83704502308736) 90%
   );
+  z-index: 3;
 }
 
 .loginFooter p {

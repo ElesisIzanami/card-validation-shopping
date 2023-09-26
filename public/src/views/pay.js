@@ -143,16 +143,16 @@ const payEstructure = `
             switch (cardNumberFiguresArray[0]){
 
             case "4":
-              imgVisa.classList.add('opacity');
+              imgVisa.classList.add('opacityPay');
               break;
             case "52":
-              imgMasterCard.classList.add('opacity');
+              imgMasterCard.classList.add('opacityPay');
               break;
             case "34":
-              imgAmerican.classList.add('opacity');
+              imgAmerican.classList.add('opacityPay');
               break;
             case "36":
-              imgDinners.classList.add('opacity');
+              imgDinners.classList.add('opacityPay');
               break;
             default:
               console.log("nada")
@@ -161,7 +161,7 @@ const payEstructure = `
 
           if(!cardNumberFigures){
             logoImgArray.forEach(e=>{
-              e.classList.remove('opacity')
+              e.classList.remove('opacityPay')
             })
           }
 

@@ -1,4 +1,5 @@
 import "../styles/shop.css";
+import "../styles/fondoShop.css";
 import { data} from '../lib/data';
 
 
@@ -14,6 +15,22 @@ function shop(navegateTo) {
 
   const shopEstructure = 
   `
+
+  <div class="areaShop" >
+        <ul class="circlesShop">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+  </div >
+
   <nav class="navShop">
     <img src="../../assets/icons/icon_menu.svg" alt="menu" class="menuHam">
 
@@ -116,10 +133,7 @@ function shop(navegateTo) {
         <p class="productDetailPrice"></p>
         <p class="productDetailName"></p>
         <p class="productDetailDescription"></p>
-        <button class="productDetailAddButton">
-          <img class="iconAddCart" src="../../assets/icons/carrito.png" alt="add to cart">
-          Add to cart
-        </button>
+        <div class="productDetailAddButtonContainer" ></div>
       </div>
     </aside> 
     <section class="main-container">
@@ -190,11 +204,14 @@ function shop(navegateTo) {
 
   //Product Detail selectors//
   const productDetailContainer =shopSection.querySelector('.productDetailContainer');
+  const productDetail =shopSection.querySelector('.productDetail');
   const productDetailButtonClose =shopSection.querySelector('.productDetailButtonClose');
   const productDetailImg =shopSection.querySelector('.productDetailImg');
   const productDetailPrice =shopSection.querySelector('.productDetailPrice');
   const productDetailName =shopSection.querySelector('.productDetailName');
   const productDetailDescription =shopSection.querySelector('.productDetailDescription');
+  const productDetailAddButtonContainer =shopSection.querySelector('.productDetailAddButtonContainer');
+  
 
   //shopping cart my Orders selectors//
   const myOrderContent =shopSection.querySelector('.myOrderContent');
@@ -262,6 +279,7 @@ function shop(navegateTo) {
     cardsContainer.classList.remove('opacity')
   })
 
+  
 
 
 //RENDER CARDS --MAIN CONTAINER//
@@ -280,6 +298,7 @@ function renderProducts(arr){
   }
     
   filteredArray.forEach( (product) => { 
+   
       const productCard = document.createElement('div');
       productCard.classList.add('product-card');
 
@@ -313,23 +332,54 @@ function renderProducts(arr){
       productCardInfo.appendChild(iconAddCart);    
       productCard.appendChild(productCardImg);
       productCard.appendChild(productCardInfo);   
-      cardsContainer.appendChild(productCard);       
+      cardsContainer.appendChild(productCard);  
 
+     
+
+      
       productCardImg.addEventListener('click',()=>{
-          productDetailContainer.classList.remove('inactive')   
+                       
+          productDetailContainer.classList.remove('inactive') 
+
           productDetailImg.setAttribute('src',product.image)
           productDetailPrice.innerText="$ "+product.price
           productDetailName.innerText=product.name
           productDetailDescription.innerText=product.description
 
           productDetailContainer.classList.add("blur-in-expand");
-
-          productDetailContainer.classList.remove('inactive');
+     
           shoppingCarContainer.classList.add('inactive');
           mobileMenu.classList.add("inactive");
           cardsContainer.classList.add("opacity");
+
+          
+            productDetailAddButtonContainer.innerHTML=""
+          
+          const productDetailAddButton = document.createElement('button');
+          productDetailAddButton.classList.add("productDetailAddButton");
+
+           const productDetailAddButtonText = document.createElement('p');
+           productDetailAddButtonText.classList.add("productDetailAddButtonText");
+          productDetailAddButtonText.innerText="Add to Cart" 
+
+
+          const iconAddCartDetail = document.createElement('img')
+          iconAddCartDetail.setAttribute('src','../../assets/icons/carrito.png');
+          iconAddCartDetail.classList.add("iconAddCart");
+
+          productDetailAddButton.append(iconAddCartDetail,productDetailAddButtonText)
+          
+          productDetailAddButtonContainer.appendChild(productDetailAddButton)
+
+          productDetailAddButton.addEventListener('click',()=>{
+            console.log("JAJAJA")
+            renderMyOrder(product)
+          })
+        
       });
+      
   });
+  
 }
 
 renderProducts(data);
@@ -477,3 +527,10 @@ myOrderContent.addEventListener('submit',(e) => {
 }
 
 export default shop;
+
+
+
+{/* <div class="productDetailAddButtonContainer">
+          <img class="iconAddCart" src="../../assets/icons/carrito.png" alt="add to cart">
+          Add to cart
+        </div>  */}

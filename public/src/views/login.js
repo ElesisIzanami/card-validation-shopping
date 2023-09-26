@@ -1,4 +1,5 @@
 import "../styles/login.css"
+import "../styles/fondoLogin.css"
 
 function login(navegando){
     
@@ -13,6 +14,22 @@ const loginEstructure = `
         <div></div>
         <div></div>
 </div>
+
+<div class="area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+</div >
+
 <div class="modalLogin">
   <form class="modalLoginForm">
       <h2>Login</h2>

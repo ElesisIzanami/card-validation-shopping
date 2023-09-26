@@ -33,12 +33,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(187, 212, 212);
+  
   position: relative;
 }
 
 .formContainer {
-  background-color: rgb(187, 212, 212);
+  
   display: grid;
   grid-template-rows: auto;
   width: 25%;
@@ -48,20 +48,22 @@
 .paymentAmount {
   text-align: center;
   margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
 }
 .paymentAmountTotal {
-  color: rgb(179, 118, 3);
-  font-family: "Quicksand", sans-serif;
+  color: orange;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 24px;
 }
 .formContainer label {
   font-family: "Quicksand", sans-serif;
+  color: white;
 }
 
 .formContainer input {
   margin-top: 3px;
-  height: 40px;
+  height: 35px;
   border-radius: 10px;
   text-align: center;
   border: none;
@@ -131,7 +133,7 @@
 .alertIsValid {
   text-align: center;
   font-size: 11px;
-  color: rgb(168, 0, 0);
+  color: orange;
 }
 .mensajeFinalContainer {
   position: absolute;
@@ -149,7 +151,7 @@
 .mensajeFinal {
   text-align: center;
   font-size: 25px;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Poppins", sans-serif;
 
   color: #7f1abb;
 }

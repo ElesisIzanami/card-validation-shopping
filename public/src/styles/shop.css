@@ -1,22 +1,11 @@
-.container-shop {
-   background: radial-gradient(
-    circle,
-    rgba(255, 168, 50, 1) 30%,
-    rgba(254, 131, 48, 1) 50%,
-    rgba(254, 95, 47, 1) 70%,
-    rgba(253, 58, 42, 1) 90%
-  ); 
-  height: 100%;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
+
 
 .containerInner-shop {
   height: 100%;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: 10vh 5vh 4fr;
+  background-color: #7f1abb;
 }
 
 .navShop {
@@ -106,14 +95,14 @@
 }
 
 .mobile-menu {
-  background-color: #7f1abb;
+  background-color: orange;
   position: absolute;
   top: 12vh;
   left: 0;
   width: 100%;
   padding: 24px;
   border-radius: 10px;
-  z-index: 2;
+  z-index: 4;
 }
 
 .mobile-menu ul {
@@ -127,8 +116,14 @@
 
 .mobile-menu ul li a {
   text-decoration: none;
-  color: white;
+  color: rgb(62, 62, 62);
   cursor: pointer;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.mobile-menu ul:nth-child(1) li:nth-child(1) a{
+  color: #7f1abb;
 }
 
 .mobile-menu ul:nth-child(3) {
@@ -136,13 +131,16 @@
 }
 .mobile-menu ul:nth-child(3) li a {
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 14px;
 }
-
+.mobile-menu .email{
+  font-weight: 300;
+}
 /*-------Shopping Container-----*/
 .shoppingContainer{
   margin-top: 25px;
+  z-index: 3;
 }
 aside {
   width: 500px;
@@ -150,7 +148,7 @@ aside {
   position: absolute;
   right: 0;
   margin-right: 5px;
-  background-color: #7f1abb;
+  background-color: orange;
   color: white;
   border-radius: 10px;
   padding: 10px 5px;
@@ -165,10 +163,10 @@ aside {
 .title-container {
   display: flex;
   font-weight: 600;
+  color: rgb(62, 62, 62);
 }
 .title-container img {
   width: 20px;
-  filter: invert(100%);
 }
 
 .shopping-cart{
@@ -177,6 +175,7 @@ aside {
     gap: 16px;
     margin-bottom: 24px;
     align-items: center;
+    color: black;
 }
 
 .shopping-cart img {
@@ -191,31 +190,40 @@ aside {
   font-family: "Quicksand", sans-serif;
   font-size: 14px;
   font-weight: bold;
+  color: rgb(62, 62, 62);
 }
 .shopping-cart .closeIcon {
   width: 12px;
   cursor: pointer;
+  filter: invert(100%);
 }
 
 .order {
   display: flex;
   justify-content: space-between;
   padding-right: 20px;
+  color: black;
+}
+
+.order p {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
 }
 
 .buttonGoPay {
   margin: 10px 0 5px 0;
-  background-color: orange;
+  background-color: #7f1abb;
   width: 100%;
   border-radius: 10px;
   height: 50px;
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
+  color: white;
 }
 
 .buttonGoPay:hover {
-  background-color: rgb(153, 101, 6);
+  background-color: #521177;
   color: white;
 }
 
@@ -232,7 +240,7 @@ aside {
 .labelSearch{
   padding: 3px 10px;
   border-radius: 5px;
-  border: none;
+  border: 1px solid black;
   background-color: white;
   display: flex;
   align-items: center;
@@ -261,7 +269,7 @@ aside {
   cursor: pointer;
   width: 20%;
   min-width: 250px;
-  margin-top: 5px;
+  
 }
 
 /*------------Render PRODUCTS CARDS-----------*/
@@ -271,6 +279,7 @@ aside {
   gap: 26px;
   place-content: center;
   margin-top: 20px;
+  
 }
 
 .product-card {
@@ -329,10 +338,12 @@ aside {
   z-index: 3;
   margin: 0;
   position: fixed;
+  background-color: white;
 }
 .productDetailButtonClose img {
   width: 40px;
   cursor: pointer;
+  filter: invert(70%);
 }
 
 .productDetailImg {
@@ -351,7 +362,7 @@ aside {
 
 .productDetailName {
   margin-top: 5px;
-  color: orange;
+  color: rgb(205, 134, 4);
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
@@ -360,12 +371,15 @@ aside {
   font-size: 13px;
   font-family: "Quicksand", sans-serif;
   margin-bottom: 5px;
+  color: rgb(62, 62, 62);
+  text-align: justify;
 }
 
-.productDetailAddButton {
+.productDetailAddButtonContainer {
   width: 100%;
+  height: 50px;
   padding: 5px;
-  color: #7f1abb;
+  color: #9149ba;
   font-family: "Poppins", sans-serif;
   border-radius: 10px;
   cursor: pointer;
@@ -373,11 +387,31 @@ aside {
   align-items: center;
   justify-content: center;
   transition: 0.1s;
+  background-color: #521177;
 }
 
-.productDetailAddButton:hover {
-  background-color: orange;
+.productDetailAddButtonContainer:hover{
+  
+  background-color: #7e2dae;
 }
+
+.productDetailAddButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+ background: none;
+ border: none;
+
+}
+.productDetailAddButtonText{
+  cursor: pointer;
+  color:rgb(163, 163, 163);
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 
 
 /*--Orders Cart Container*/
@@ -410,8 +444,9 @@ aside {
 }
 
 
-.selectButtonMenor{
-  background-color: red;
+.selectButton{
+  background-color: white;
+  color: black;
 }
 
 
@@ -429,8 +464,11 @@ aside {
 
   .selectContainer{
     flex-direction: column;
-    gap: 5px;
-    
+    gap: 5px; 
+  }
+
+  .selectButton{
+    margin-top: 5px;
   }
 
   .cards-container {
